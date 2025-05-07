@@ -1,0 +1,7 @@
+cListviewItem
+Changes: LedgerStyle properties
+         Added events SubItemClick, SubItemDoubleClick
+         Added Column Sorting
+
+
+Check to see about special column types....checkbox, progressbar, etc

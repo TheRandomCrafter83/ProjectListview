@@ -1,0 +1,37 @@
+cListviewItem
+Changes: LedgerStyle properties
+         Added events SubItemClick, SubItemDoubleClick
+         Added Column Sorting
+
+
+Check to see about special column types....checkbox, progressbar, etc
+
+
+Need to figure out how to draw the item's backcolor when no watermark image is set with out having to change the item's backcolor in the code so that
+we are not overriding any precoded color.
+
+Autosizing Columns(Requested):
+	Public Sub AutoSizeListViewColumns(ByVal target As ListView, ByVal ParamArray columns() As Integer)
+				If columns.Length > 0 Then
+					Dim autoColumnList As New List(Of Integer)(columns)
+					Dim totalFixedWidth As Integer = (From column As ColumnHeader In target.Columns Where Not autoColumnList.Contains(column.Index)).Sum(Function(column) column.Width)
+					Dim autoWidth As Integer = CInt(Math.Floor((target.ClientSize.Width - totalFixedWidth) / autoColumnList.Count))
+					For Each index As Integer In autoColumnList
+						target.Columns(index).Width = autoWidth
+					Next
+				End If
+	End Sub
+
+
+Column Background color:
+  Use to set the background color of the subitem falling under the column header.
+
+
+********
+For the custom column types, use a separate property to handle extra properties for each column.
+********
+
+
+
+Original C++ Code Source:
+http://www.kidmoses.com/blog-article.php?bid=16
